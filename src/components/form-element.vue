@@ -17,9 +17,9 @@
   </div>
 </template>
 <script>
-import MInput from "../components/Input";
-import MFormItem from "../components/FormItem";
-import MForm from "../components/Form";
+import MInput from "./Input";
+import MFormItem from "./FormItem";
+import MForm from "./Form";
 // 分析：
 // Form负责数据模型添加校验规则
 // FormItem绑定label prop校验和显示错误信息

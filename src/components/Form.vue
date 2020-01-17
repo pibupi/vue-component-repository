@@ -22,7 +22,7 @@ export default {
     }
   },
   created() {
-    console.log(123)
+    console.log(123);
     // 缓存需要校验的表单项
     this.fileds = [];
     this.$on("formItemAdd", item => {
