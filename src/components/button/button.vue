@@ -1,123 +1,89 @@
 <template>
-  <button type="button" class="z-button" :class="'z-button--' + type">
-    <span>
+  <button
+    :autofocus="autofocus"
+    :type="nativeType"
+    :disabled="disable || loading"
+    class="z-button"
+    :class="[
+      'z-button--' + type,
+      buttonSizeClass,
+      {
+        'is-plain': plain,
+        'is-round': round,
+        'is-circle': circle,
+        'is-disabled': disable,
+        'is-loading': loading
+      }
+    ]"
+    @click="handleClick"
+  >
+    <i v-if="loading" class="z-icon-loading"></i>
+    <i v-if="!loading && icon" :class="icon"></i>
+    <span v-if="$slots.default">
       <slot></slot>
     </span>
   </button>
 </template>
 <script>
 export default {
-  name: "zbutton",
+  name: "ZButton",
   props: {
     type: {
       type: String,
       default: "default"
+    },
+    nativeType: {
+      type: String,
+      default: "button",
+      validator: value => {
+        return ["button", "reset", "submit"].indexOf(value) !== -1;
+      }
+    },
+    autofocus: Boolean,
+    plain: {
+      type: Boolean,
+      default: false
+    },
+    round: {
+      type: Boolean,
+      default: false
+    },
+    circle: {
+      type: Boolean,
+      default: false
+    },
+    disable: {
+      type: Boolean,
+      default: false
+    },
+    loading: Boolean,
+    icon: String,
+    size: {
+      type: String,
+      validator: value => {
+        return ["medium", "small", "mini"].indexOf(value) !== -1;
+      }
+    }
+  },
+  computed: {
+    buttonSizeClass() {
+      if (this.size) {
+        return "z-button--" + this.size;
+      }
+      return null;
+    }
+  },
+  methods: {
+    handleClick(event) {
+      // if (this.$props.disable) {
+      //   console.log("disable");
+      //   return;
+      // }
+      this.$emit("click", event);
     }
   }
 };
 </script>
 <style lang="scss" scoped>
-.z-button {
-  display: inline-block;
-  line-height: 1;
-  white-space: nowrap;
-  cursor: pointer;
-  background: #fff;
-  border: 1px solid #dcdfe6;
-  color: #606266;
-  -webkit-appearance: none;
-  text-align: center;
-  box-sizing: border-box;
-  outline: none;
-  margin: 0;
-  transition: 0.1s;
-  font-weight: 500;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  padding: 12px 20px;
-  font-size: 14px;
-  border-radius: 4px;
-  &:focus,
-  &:hover {
-    color: #409eff;
-    border-color: #c6e2ff;
-    background-color: #ecf5ff;
-  }
-  &:active {
-    color: #3a8ee6;
-    border-color: #3a8ee6;
-    outline: none;
-  }
-}
-.z-button--primary {
-  color: #fff;
-  background-color: #409eff;
-  border-color: #409eff;
-  &:focus,
-  &:hover {
-    background: #66b1ff;
-    border-color: #66b1ff;
-    color: #fff;
-  }
-  &:active {
-    outline: none;
-  }
-}
-.z-button--success {
-  color: #fff;
-  background-color: #67c23a;
-  border-color: #67c23a;
-  &:focus,
-  &:hover {
-    background: #85ce61;
-    border-color: #85ce61;
-    color: #fff;
-  }
-  &:active {
-    outline: none;
-  }
-}
-.z-button--info {
-  color: #fff;
-  background-color: #909399;
-  border-color: #909399;
-  &:focus,
-  &:hover {
-    background: #a6a9ad;
-    border-color: #a6a9ad;
-    color: #fff;
-  }
-  &:active {
-    outline: none;
-  }
-}
-.z-button--warning {
-  color: #fff;
-  background-color: #e6a23c;
-  border-color: #e6a23c;
-  &:focus,
-  &:hover {
-    background: #ebb563;
-    border-color: #ebb563;
-    color: #fff;
-    &:active {
-      outline: none;
-    }
-  }
-}
-.z-button--danger {
-  color: #fff;
-  background-color: #f56c6c;
-  border-color: #f56c6c;
-  &:focus,
-  &:hover {
-    background: #f78989;
-    border-color: #f78989;
-    color: #fff;
-  }
-  &:active {
-    outline: none;
-  }
-}
+@import "../../theme/components/button.scss";
 </style>
