@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Form from "../views/form/form-view.vue";
 import Button from "../views/button/button-view.vue";
+import Datepicker from "../views/date-picker/date-picker-view.vue";
 
 Vue.use(VueRouter);
 
@@ -15,6 +16,11 @@ const routes = [
     path: "/button",
     name: "button",
     component: Button
+  },
+  {
+    path: "/datepicker",
+    name: "datepicker",
+    component: Datepicker
   }
   // {
   //   path: "/about",

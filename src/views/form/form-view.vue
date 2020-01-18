@@ -1,5 +1,5 @@
 <template>
-  <div id="form">
+  <div id="z-form-container">
     <Form-element></Form-element>
   </div>
 </template>
