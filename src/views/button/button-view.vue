@@ -135,8 +135,7 @@ export default {
     ZButtonGroup
   },
   methods: {
-    handleClickTest(event) {
-      console.log(event);
+    handleClickTest() {
       this.loading = !this.loading;
     }
   }
