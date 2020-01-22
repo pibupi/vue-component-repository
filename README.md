@@ -19,6 +19,4 @@ yarn build
 ```
 yarn lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+参考elementui库，基于vue实现各种组件得封装。持续更新ing...

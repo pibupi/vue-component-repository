@@ -125,6 +125,7 @@
 import ZButton from "@/components/button/button";
 import ZButtonGroup from "@/components/button-group/button-group";
 export default {
+  name: "ZButtonView",
   data() {
     return {
       loading: true

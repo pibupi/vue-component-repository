@@ -5,7 +5,7 @@
     :disabled="disable || loading"
     class="z-button"
     :class="[
-      'z-button--' + type,
+      `z-button-- + ${type}`,
       buttonSizeClass,
       {
         'is-plain': plain,
